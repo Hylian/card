@@ -1,0 +1,108 @@
+Cmp-Mod V01 Created by PcbNew date = 9/1/2014 4:05:16 AM
+
+BeginCmp
+TimeStamp = /5400BD19;
+Reference = C1;
+ValeurCmp = 0.1uF;
+IdModule  = SM0402_c;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B7AE;
+Reference = C2;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B7BB;
+Reference = C3;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B7E5;
+Reference = C4;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B7EB;
+Reference = C5;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B7F1;
+Reference = C6;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B7F7;
+Reference = C7;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B7FD;
+Reference = C8;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B803;
+Reference = C9;
+ValeurCmp = CAPPAD;
+IdModule  = CAPPAD;
+EndCmp
+
+BeginCmp
+TimeStamp = /53FFC71C;
+Reference = CON1;
+ValeurCmp = USB-MINI-B;
+IdModule  = 15542661MicroUSBB;
+EndCmp
+
+BeginCmp
+TimeStamp = /53FFC6FB;
+Reference = D1;
+ValeurCmp = ZENERARRAY;
+IdModule  = SMini4-F3-B;
+EndCmp
+
+BeginCmp
+TimeStamp = /53FFCEE4;
+Reference = IC1;
+ValeurCmp = ATTINY44-S;
+IdModule  = so-14-inverted;
+EndCmp
+
+BeginCmp
+TimeStamp = /54012FCB;
+Reference = P1;
+ValeurCmp = CONN_3X2;
+IdModule  = pin_array_3x2_no_silk;
+EndCmp
+
+BeginCmp
+TimeStamp = /5400B479;
+Reference = R1;
+ValeurCmp = 1.5k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /53FFC96B;
+Reference = RP1;
+ValeurCmp = 68R;
+IdModule  = MNR12;
+EndCmp
+
+EndListe
