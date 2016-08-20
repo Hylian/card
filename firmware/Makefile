@@ -7,7 +7,7 @@
 # License: GPLv2.
 # This Revision: $Id$
 
-DEVICE=attiny26
+DEVICE=attiny861
 AVRDUDE = avrdude -c avrispmkII -p $(DEVICE)
 # The two lines above are for "avrdude" and the STK500 programmer connected
 # to an USB to serial converter to a Mac running Mac OS X.

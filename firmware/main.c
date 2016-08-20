@@ -37,23 +37,19 @@ uint16_t touchMeasure(uint8_t channel);
 
 /* ------------------------------------------------------------------------- */
 
-static inline touchInit()
+static inline void touchInit()
 {
     char i;
 
     /* Reference AVCC (5V) */
-    //ADMUX = 0;
+    ADMUX = 0;
 
     /* Clockdiv 64 , enable ADC */
-    ADCSR = (1<<ADPS2)|(1<<ADPS1)|(1<<ADEN);
-    //ADCSR = 0b10000110;
+    ADCSRA = (1<<ADPS2)|(1<<ADPS1)|(1<<ADEN);
 
-    /*
     btncal = 0;
     for(i=0;i<10;i++)
        btncal += touchMeasure(1)/10;
-       */
-    btncal = touchMeasure(1);
 }
 
 static inline void adc_channel(uint8_t channel)
@@ -66,13 +62,13 @@ static inline void adc_channel(uint8_t channel)
 static inline uint16_t adc_get()
 {
     /* Start Conversion */
-    ADCSR |= (1<<ADSC);
+    ADCSRA |= (1<<ADSC);
 
     /* Block while conversion is ongoing */
-    while(!(ADCSR & (1<<ADIF)));
+    while(!(ADCSRA & (1<<ADIF)));
 
     /* Manually clear the interrupt flag */
-    ADCSR |= (1<<ADIF);
+    ADCSRA |= (1<<ADIF);
     return ADC;
 }
 
@@ -175,7 +171,7 @@ static void buildReport(void)
 {
     reportBuffer[0] = !btnAPressed; // Buttons: 8b0000[Start][Select][B][A]
     reportBuffer[2] = (sample>>3); // X-axis (8-bit signed)
-    //reportBuffer[1] = 0; // Y-axis (8-bit signed)
+    reportBuffer[1] = 0; // Y-axis (8-bit signed)
 }
 
 /* ------------------------------------------------------------------------- */
@@ -279,29 +275,27 @@ int main(void)
 uchar   i;
 uchar   calibrationValue;
 
-/*
     calibrationValue = eeprom_read_byte(0); // calibration value from last time
     if(calibrationValue != 0xff){
         OSCCAL = calibrationValue;
     }
-*/
-    //OSCCAL = eeprom_read_byte(0);
-    //odDebugInit();
+    OSCCAL = eeprom_read_byte(0);
+    odDebugInit();
     touchInit();
     usbDeviceDisconnect();
     for(i=0;i<20;i++){  // 300 ms disconnect 
         _delay_ms(15);
     }
     usbDeviceConnect();
-    //wdt_enable(WDTO_1S);
+    wdt_enable(WDTO_1S);
     usbInit();
     sei();
     for(;;){    /* main event loop */
-        //wdt_reset();
+        wdt_reset();
         
         sample = touchMeasure(1);
 
-        //btnAPressed = touchMeasure(1) > (2000);
+        btnAPressed = touchMeasure(1) > (2000);
 
         usbPoll();
         if(usbInterruptIsReady()){ /* we can send another key */
